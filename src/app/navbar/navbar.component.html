@@ -1,0 +1,130 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img id="logo" src="../../assets/logo.png" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+
+        <!-- Navigation -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/home_graydark-6cfd0717cf5afc423d0f7cc63e8c0dc8.png" />
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/discover_graydark-dfba772fcedb677930bba327a9032028.png" />
+                    <span>Discover</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/article_graydark-94c399c0521f66809737bbe56dec42cb.png" />
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/channels_graydark-9ef57995b3204273f5442f0f80dfedb2.png" />
+                    <span>Channels</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Search -->
+        <form class="form-inline my-2 my-lg-0 nav-item">
+            <input id="search-bar" class="form-control mr-sm-2 icon-search" type="text" placeholder="Search for things you love...">
+        </form>
+
+        <!-- User options -->
+        <div id="user-options" *ngIf="isLoggedIn">
+            <table>
+                <tr>
+                    <td>
+                        <button id="new-post-btn" class="nav-link" (click)="addNewPost()">
+                            <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/add_white-f0c2ecfb540b2012bc13467daae6bff5.png" />
+                            <span>New Post</span>
+                        </button>
+                    </td>
+                    <td>
+                        <div class="wrapper">
+                            <span *ngIf="messages.length > 0" class="counter">{{messages.length}}</span>
+                            <a class="nav-link" href="#">
+                                <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/messages_graydark-248d04be105d9c15b5e72b8533415217.png" />
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="nav-item dropdown">
+                            <div class="wrapper nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span *ngIf="notifications.length > 0" class="counter">{{notifications.length}}</span>
+                                <a class="nav-link" href="#">
+                                    <img class="nav-icon" src="https://assets.whicdn.com/assets/whi-light/icons/notifications_graydark-b016084b4995d7ae9c2941b2e3c0ced7.png" />
+                                </a>
+                            </div>
+                            <div class="dropdown-menu notification" x-placement="bottom-start">
+                                <div class="scroll">
+                                    <div *ngFor="let item of notifications" class="dropdown-item" href="#">
+                                        <div class="container notification-container">
+                                            <div class="row">
+                                                <div class="col-2 ">
+                                                    <img class="notification-img" [src]="item.imageUrl"
+                                                        alt="Superthumb">
+                                                </div>
+                                                <div class="col-8">
+                                                    {{item.text}}
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="action-btn">{{item.button}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item pink-text" href="#"><span>view all notifications</span></a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="avatar-dropdown" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img id="avatar" src="https://data.whicdn.com/avatars/2767271/thumb.jpg?t=1406569253">
+                            </a>
+                            <div class="dropdown-menu" x-placement="bottom-start">
+                                <a class="dropdown-item" href="#">My Canvas</a>
+                                <a class="dropdown-item" href="#">My Collection</a>
+                                <a class="dropdown-item" href="#">My Post</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="button-wrapper">
+                                    <button (click)="logOut()" type="button" class="btn btn-secondary">Log out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div *ngIf="!isLoggedIn">
+            <button type="button" class="btn pink-btn nav-link" (click)="join()">
+                <span>Join</span>
+            </button>
+            <button type="button" class="btn white-btn nav-link" (click)="logIn()">
+                <span class="pink-text">Log in</span>
+            </button>
+        </div>
+
+    </div>
+</nav>
