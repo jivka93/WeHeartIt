@@ -1,0 +1,55 @@
+#content{
+    margin: 7vh 4vw;
+    padding: 1%;
+    font-size: 14px;
+}
+
+#channelsOfTheWeek, #popularImages {
+    margin-bottom: 40px;
+}
+
+div.scrollmenu {  
+    overflow: auto;
+    white-space: nowrap;
+    padding: 20px 0px;
+}
+
+.channel {
+    display: inline;
+    position: relative;
+}
+
+h2 {
+    color: #4a4a4a;
+}
+
+.channel h3{
+    position: absolute;
+    color: white;
+    text-shadow: 0 2px 5px rgba(2,2,2,10), 0 -1px 1px rgba(0,0,0,0.05);
+    left: 25px;
+    bottom: -85px;
+    cursor: pointer;
+}
+
+div.scrollmenu div img{
+    border-radius: 3px;
+    max-height: 200px;
+    cursor: pointer;
+}
+
+div.scrollmenu div img:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3), 0 -1px 1px rgba(0,0,0,0.05);
+}
+
+a {
+    color: #9b9b9b;
+}
+
+.nav-link:active a{
+    color:purple;
+}
+
+.nav-item:hover a{
+    color:black;
+}

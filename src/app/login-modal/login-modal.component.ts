@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login-modal',
@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,66 @@
+<div id="content">
+
+  <div id="channelsOfTheWeek">
+    <h2>Channels of the week</h2>
+    <div class="scrollmenu">
+      <div *ngFor="let channel of channelsOfTheWeek" class="col-sm channel">
+        <img [src]="channel.image" alt="image">
+        <h3>{{channel.name}}</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="popularImages">
+    <h2>Popular Images</h2>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#rightNow">Right now</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#yesterday">Yesterdsay</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#lastWeek">Last week</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#lastMonth">Last month</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#lastYear">Last year</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade show active" id="rightNow">
+        <p>Right now is working!</p>
+      </div>
+      <div class="tab-pane fade" id="yesterday">
+        <p>Yesterday is working!</p>
+      </div>
+      <div class="tab-pane fade" id="lastWeek">
+        <p>Last week is working!</p>
+      </div>
+      <div class="tab-pane fade" id="lastMonth">
+        <p>Last month is working!</p>
+      </div>
+      <div class="tab-pane fade" id="lastYear">
+        <p>Last year is working.</p>
+      </div>
+
+    </div>
+
+
+  </div>
