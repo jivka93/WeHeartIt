@@ -16,15 +16,29 @@ export class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.image = image;
+        if (image == null || image.trim() == "") {
+            this.image = "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
+        } else {
+            this.image = image;
+        }      
     }
 
-    public follow(follower:User) {
+    public addFollower(follower:User) {
         this.followers.push(follower);
+        follower.startFollowing(this);
+    }
+
+    public startFollowing(user:User) {
+        this.following.push(user);
+        user.addFollower(this);
     }
 
     public addCollection(collectionName:string) {
         this.collections.push(new Collection(collectionName, this));
+    }
+
+    public addPostToCollection(collection:Collection, post:Post) {
+        collection.posts.push(post);
     }
 
     public addPost(imageUrl:string, tags:string[]) {
