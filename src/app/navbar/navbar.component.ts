@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IfStmt } from '@angular/compiler';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,8 @@ import { IfStmt } from '@angular/compiler';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input() user : User;
+
   constructor() { 
   }
 
@@ -15,7 +18,6 @@ export class NavbarComponent implements OnInit {
   };
 
   isLoggedIn = true;
-
   messages = [];
   notifications = [
     {

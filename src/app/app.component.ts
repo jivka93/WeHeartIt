@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, Input } from '@angular/core';
 import { User } from './models/user.model';
 
 @Component({
@@ -7,15 +7,20 @@ import { User } from './models/user.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser : User;
+  @Input() currentUser : User;
 
-  constructor() { 
+  constructor() {
   }
 
-  login(username:string, password:string) {
-
+  onLogin(loginData: {email:string, password:string}) {
     // TODO loginService
-    // this.currentUser = this.loginService.login(username, password);
+    // this.currentUser = this.loginService.login(loginData.email, loginData.password);
+    this.currentUser = new User('Jivka93', loginData.email, loginData.password, '');
+  }
+
+  onLogout() {
+    if(this.currentUser != null)
+    this.currentUser = null;
   }
 
   register(username:string, email:string, password:string, repeatPassword:string, image:string) {

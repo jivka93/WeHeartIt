@@ -2,17 +2,12 @@ import { Post } from "./post.model";
 import { Collection } from "./collection.model";
 
 export class User {
-    public username: string;
-    public email: string;
-    public password: string;
-    public image: string;
-
     public posts: Post[];
     public collections: Collection[];
     public followers: User[];
     public following: User[];
 
-    constructor(username:string, email:string, password:string, image:string) {
+    constructor(public username:string, public email:string, public password:string, public image:string) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -20,7 +15,12 @@ export class User {
             this.image = "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
         } else {
             this.image = image;
-        }      
+        }
+
+        this.posts = [];
+        this.collections = [];
+        this.followers = [];
+        this.following = [];
     }
 
     public addFollower(follower:User) {

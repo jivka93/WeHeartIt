@@ -5,8 +5,8 @@ export class Collection {
     public name: string;
     public author: User;
     public coverImageUrl: string;
-    public posts: Post[];
-    public followers: User[];
+    public posts: Post[] = [];
+    public followers: User[] = [];
 
     constructor(name:string, author:User) {
         this.author = author;
