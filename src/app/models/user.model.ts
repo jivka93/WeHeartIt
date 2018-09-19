@@ -7,16 +7,12 @@ export class User {
     public followers: User[];
     public following: User[];
 
-    constructor(public username:string, public email:string, public password:string, public image:string) {
+    constructor(public username:string, public email:string, public password:string, public image?:string) {
         this.username = username;
         this.email = email;
         this.password = password;
-        if (image == null || image.trim() == "") {
-            this.image = "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png"
-        } else {
-            this.image = image;
-        }
-
+        this.image = image ? image: "https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png";
+        
         this.posts = [];
         this.collections = [];
         this.followers = [];

@@ -8,6 +8,7 @@ import { User } from './models/user.model';
 })
 export class AppComponent {
   @Input() currentUser : User;
+  @Input() showLoginModal : boolean;
 
   constructor() {
   }
@@ -15,7 +16,11 @@ export class AppComponent {
   onLogin(loginData: {email:string, password:string}) {
     // TODO loginService
     // this.currentUser = this.loginService.login(loginData.email, loginData.password);
-    this.currentUser = new User('Jivka93', loginData.email, loginData.password, '');
+    this.currentUser = new User('Jivka93', loginData.email, loginData.password);
+  }
+
+  onLoginModal(arg: boolean) {
+    this.showLoginModal = arg;
   }
 
   onLogout() {

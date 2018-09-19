@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IfStmt } from '@angular/compiler';
 import { User } from '../models/user.model';
 
@@ -9,15 +9,18 @@ import { User } from '../models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() user : User;
+  @Input() @Output() user : User;
+  @Output() showLoginModal = new EventEmitter<boolean>();;
 
   constructor() { 
+
   }
 
   ngOnInit() {
+    this.showLoginModal.emit(false);
   };
 
-  isLoggedIn = true;
+  isLoggedIn = this.user ? true : false;
   messages = [];
   notifications = [
     {
@@ -37,15 +40,14 @@ export class NavbarComponent implements OnInit {
     }
   ];
 
-  logIn = function() {
-    if(!this.isLoggedIn){
-      this.isLoggedIn = true; 
-    }
+  onlogIn = function() {
+    this.showLoginModal.emit(true);
+    console.log('navbar emitting "true"');
   };
 
   logOut = function() {
-    if(this.isLoggedIn){
-      this.isLoggedIn = false;
+    if(this.user){
+      this.user = null;
     }
   };
 

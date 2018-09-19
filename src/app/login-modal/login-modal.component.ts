@@ -7,27 +7,23 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class LoginModalComponent {
   @Output() login = new EventEmitter<{email:string, password:string}>();
-  @Input() show: boolean = true;
+  @Input() show: boolean;
 
-  showModal() {
-    return this.show === true ? 'display:block': 'display:hidden'
-  };
-
-  email="staticEmail";
+  email:string;
   password:string;
 
   constructor() {
-    this.show = true;
+
   }
 
   onLogin() {
     this.login.emit({email: this.email, password: this.password});
+    this.closeModal();
   }
 
   closeModal() {
-    this.showModal = function() {
-      return 'display:hidden'
-    }
+    this.show = false;
+    console.log('modal emitting false');
   }
 
 }

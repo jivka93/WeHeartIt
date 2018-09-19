@@ -1,5 +1,10 @@
-<app-navbar [user]="currentUser">Loading navbar component...</app-navbar>
+<app-navbar [user]="currentUser" (showLoginModal)="onLoginModal($event)">Loading navbar component...</app-navbar>
 
-<!-- <app-login-modal (login)="onLogin($event)">Loading login-modal component...</app-login-modal> -->
+<app-login-modal [show]="showLoginModal" (login)="onLogin($event)">Loading login-modal component...</app-login-modal>
 
 <app-content>Loading content component...</app-content>
+
+<div *ngIf="currentUser">
+    <p>{{currentUser.email}}</p>
+    <p>{{currentUser.password}}</p>
+</div>
